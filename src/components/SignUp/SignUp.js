@@ -6,6 +6,7 @@ import {useAppContext} from "../../libs/contextLib";
 import {useFormFields} from "../../libs/hooksLib";
 import {onError} from "../../libs/errorLib";
 import "./SignUp.css";
+import {createUser} from "../../api/springRestApi";
 
 export default function SignUp() {
     const [fields, handleFieldChange] = useFormFields({
@@ -16,7 +17,7 @@ export default function SignUp() {
     });
     const history = useHistory();
     const [newUser, setNewUser] = useState(null);
-    const {userHasAuthenticated} = useAppContext();
+    const {userHasAuthenticated, setUserList, userList} = useAppContext();
     const [isLoading, setIsLoading] = useState(false);
 
     function validateForm() {
@@ -33,15 +34,19 @@ export default function SignUp() {
 
     async function handleSubmit(event) {
         event.preventDefault();
-
         setIsLoading(true);
-
-        try {
-            localStorage.setItem("email", fields.email);
-            localStorage.setItem("password", fields.password);
+        try{
+            const newUser = {
+                name: "",
+                password: fields.password,
+                email: fields.email
+            };
+            await createUser(newUser);
             setIsLoading(false);
-            setNewUser(fields.email);
-        } catch (e) {
+            userList.push(newUser);
+            setUserList(userList);
+            setNewUser(newUser);
+        }catch(e){
             onError(e);
             setIsLoading(false);
         }

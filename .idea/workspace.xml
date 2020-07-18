@@ -1,35 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e6b39b7-555b-488e-bc6b-141deeebad88" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Routes/Routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Home/Home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Home/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LoaderButton/LoaderButton.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LoaderButton/LoaderButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Login/Login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Login/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/NotFound/NotFound.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/NotFound/NotFound.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SignUp/SignUp.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SignUp/SignUp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/libs/contextLib.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/libs/errorLib.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/libs/hooksLib.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/react-template.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/react-template.iml" afterDir="false" />
+    <list default="true" id="6e6b39b7-555b-488e-bc6b-141deeebad88" name="Default Changelist" comment="Login page, SignUp page - using local storage (place holder for api calls)&#10;Navbar">
+      <change afterPath="$PROJECT_DIR$/src/api/apiConfiguration.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/requestsConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/springRestApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SignUp/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignUp/SignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/libs/errorLib.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/errorLib.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -110,12 +94,25 @@
       <workItem from="1594796042927" duration="701000" />
       <workItem from="1594920526103" duration="1198000" />
       <workItem from="1594976054362" duration="16896000" />
-      <workItem from="1595013626031" duration="2519000" />
+      <workItem from="1595013626031" duration="3302000" />
+      <workItem from="1595057892022" duration="15915000" />
     </task>
+    <task id="LOCAL-00001" summary="Login page, SignUp page - using local storage (place holder for api calls)&#10;Navbar">
+      <created>1595016367091</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1595016367091</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Login page, SignUp page - using local storage (place holder for api calls)&#10;Navbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login page, SignUp page - using local storage (place holder for api calls)&#10;Navbar" />
   </component>
   <component name="WindowStateProjectService">
     <state x="3039" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594583969516">
@@ -130,25 +127,29 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1594583167168" />
-    <state width="2005" height="305" key="GridCell.Tab.0.bottom" timestamp="1595014885366">
+    <state x="649" y="125" key="CommitChangelistDialog2" timestamp="1595076713929">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595014885366" />
+    <state x="649" y="125" key="CommitChangelistDialog2/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595076713929" />
+    <state width="2005" height="305" key="GridCell.Tab.0.bottom" timestamp="1595073852945">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="305" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595073852945" />
     <state width="2005" height="305" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.0.2048.1112@2560.0.2048.1112" timestamp="1594584057665" />
-    <state width="2005" height="305" key="GridCell.Tab.0.center" timestamp="1595014885366">
+    <state width="2005" height="305" key="GridCell.Tab.0.center" timestamp="1595073852945">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.0.center/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595014885366" />
+    <state width="2005" height="305" key="GridCell.Tab.0.center/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595073852945" />
     <state width="2005" height="305" key="GridCell.Tab.0.center/0.0.2048.1112/2560.0.2048.1112@2560.0.2048.1112" timestamp="1594584057664" />
-    <state width="2005" height="305" key="GridCell.Tab.0.left" timestamp="1595014885366">
+    <state width="2005" height="305" key="GridCell.Tab.0.left" timestamp="1595073852945">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.0.left/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595014885366" />
+    <state width="2005" height="305" key="GridCell.Tab.0.left/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595073852945" />
     <state width="2005" height="305" key="GridCell.Tab.0.left/0.0.2048.1112/2560.0.2048.1112@2560.0.2048.1112" timestamp="1594584057664" />
-    <state width="2005" height="305" key="GridCell.Tab.0.right" timestamp="1595014885366">
+    <state width="2005" height="305" key="GridCell.Tab.0.right" timestamp="1595073852945">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="305" key="GridCell.Tab.0.right/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595014885366" />
+    <state width="2005" height="305" key="GridCell.Tab.0.right/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595073852945" />
     <state width="2005" height="305" key="GridCell.Tab.0.right/0.0.2048.1112/2560.0.2048.1112@2560.0.2048.1112" timestamp="1594584057664" />
     <state x="533" y="201" key="SettingsEditor" timestamp="1595013936029">
       <screen x="0" y="0" width="2048" height="1112" />
@@ -159,14 +160,18 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="785" y="261" key="VCS.ChangeListViewerDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1594981276166" />
-    <state x="630" y="167" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1595002921067">
+    <state x="617" y="289" key="Vcs.Push.Dialog.v2" timestamp="1595016368809">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="630" y="167" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595002921067" />
-    <state x="734" y="289" width="579" height="534" key="find.popup" timestamp="1595015070537">
+    <state x="617" y="289" key="Vcs.Push.Dialog.v2/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595016368809" />
+    <state x="630" y="167" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1595071830182">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="734" y="289" width="579" height="534" key="find.popup/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595015070537" />
+    <state x="630" y="167" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595071830182" />
+    <state x="734" y="289" width="579" height="534" key="find.popup" timestamp="1595058019901">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="734" y="289" width="579" height="534" key="find.popup/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1595058019901" />
     <state x="732" y="345" key="git4idea.merge.GitPullDialog" timestamp="1594981257177">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

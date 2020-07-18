@@ -1,16 +1,17 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import React, {useState} from "react";
+import {useHistory} from "react-router-dom";
+import {ControlLabel, FormControl, FormGroup} from "react-bootstrap";
 import LoaderButton from "../../components/LoaderButton/LoaderButton";
-import { useAppContext } from "../../libs/contextLib";
-import { useFormFields } from "../../libs/hooksLib";
-import { onError } from "../../libs/errorLib";
+import {useAppContext} from "../../libs/contextLib";
+import {useFormFields} from "../../libs/hooksLib";
+import {onError} from "../../libs/errorLib";
 import "./Login.css";
+import {loginUser} from "../../api/springRestApi";
 
 
 export default function Login() {
     const history = useHistory();
-    const { userHasAuthenticated } = useAppContext();
+    const {userHasAuthenticated, userList} = useAppContext();
     const [isLoading, setIsLoading] = useState(false);
     const [fields, handleFieldChange] = useFormFields({
         email: "",
@@ -25,15 +26,21 @@ export default function Login() {
     async function handleSubmit(event) {
         event.preventDefault();
         setIsLoading(true);
+
+        const newUser = {
+            name: "",
+            password: fields.password,
+            email: fields.email
+        };
         try {
-            // await Auth.signIn(fields.email, fields.password);
-            localStorage.setItem("loggedIn","true");
+            await loginUser(newUser);
             userHasAuthenticated(true);
-            setTimeout(()=>history.push("/"),1000);
-        } catch (e) {
+            setTimeout(() => history.push("/"), 1000);
+        }catch(e){
             onError(e);
             setIsLoading(false);
         }
+
     }
 
     return (
