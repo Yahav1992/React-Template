@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
-import {ControlLabel, FormControl, FormGroup} from "react-bootstrap";
+import {FormLabel, FormControl, FormGroup} from "react-bootstrap";
 import LoaderButton from "../../components/LoaderButton/LoaderButton";
 import {useAppContext} from "../../libs/contextLib";
 import {useFormFields} from "../../libs/hooksLib";
@@ -11,7 +11,7 @@ import {loginUser} from "../../api/springRestApi";
 
 export default function Login() {
     const history = useHistory();
-    const {userHasAuthenticated, userList} = useAppContext();
+    const {userHasAuthenticated} = useAppContext();
     const [isLoading, setIsLoading] = useState(false);
     const [fields, handleFieldChange] = useFormFields({
         email: "",
@@ -34,6 +34,7 @@ export default function Login() {
         };
         try {
             await loginUser(newUser);
+            localStorage.setItem("loggedIn", "true");
             userHasAuthenticated(true);
             setTimeout(() => history.push("/"), 1000);
         }catch(e){
@@ -46,8 +47,8 @@ export default function Login() {
     return (
         <div className="Login">
             <form onSubmit={handleSubmit}>
-                <FormGroup controlId="email" bsSize="large">
-                    <ControlLabel>Email</ControlLabel>
+                <FormGroup controlId="email" size="lg">
+                    <FormLabel>Email</FormLabel>
                     <FormControl
                         autoFocus
                         type="email"
@@ -55,8 +56,8 @@ export default function Login() {
                         onChange={handleFieldChange}
                     />
                 </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
-                    <ControlLabel>Password</ControlLabel>
+                <FormGroup controlId="password" size="lg">
+                    <FormLabel>Password</FormLabel>
                     <FormControl
                         type="password"
                         value={fields.password}
@@ -66,7 +67,7 @@ export default function Login() {
                 <LoaderButton
                     block
                     type="submit"
-                    bsSize="large"
+                    size="lg"
                     isLoading={isLoading}
                     disabled={!validateForm()}
                 >

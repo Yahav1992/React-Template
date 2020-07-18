@@ -1,6 +1,8 @@
 import React from "react";
-import {Button, Glyphicon} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import "./LoaderButton.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 
 export default function LoaderButton({
                                          isLoading,
@@ -14,7 +16,7 @@ export default function LoaderButton({
             disabled={disabled || isLoading}
             {...props}
         >
-            {isLoading && <Glyphicon glyph="refresh" className="spinning"/>}
+            {isLoading && <FontAwesomeIcon pulse icon={faSpinner} />}
             {props.children}
         </Button>
     );

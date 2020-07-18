@@ -2,12 +2,12 @@ import React, {useEffect, useState} from "react";
 import "./App.css";
 import Routes from "./Routes/Routes";
 import {AppContext} from "./libs/contextLib";
-import {getAllUsers} from "./api/springRestApi";
+import 'normalize.css/normalize.css'
+import './styles/styles.scss';
 
 function App() {
     const [isAuthenticated, userHasAuthenticated] = useState(false);
     const [isAuthenticating, setIsAuthenticating] = useState(true);
-    const [userList, setUserList] = useState(false);
 
     useEffect(() => {
         onLoad();
@@ -15,7 +15,6 @@ function App() {
 
     async function onLoad() {
         try {
-            getAllUsers().then(r => setUserList(r.data))
             let loggedIn = localStorage.getItem("loggedIn");
             userHasAuthenticated(loggedIn !== null);
         } catch (e) {
@@ -32,9 +31,7 @@ function App() {
             isAuthenticated,
             userHasAuthenticated,
             isAuthenticating,
-            setIsAuthenticating,
-            userList,
-            setUserList
+            setIsAuthenticating
         }}>
             <Routes/>
         </AppContext.Provider>

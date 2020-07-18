@@ -14,9 +14,9 @@ export default function Routes() {
         <BrowserRouter>
             <Header/>
             <Switch>
-                <Route path="/" component={Home} exact/>
-                <Route path="/login" component={Login} exact/>
-                <Route path="/signup" component={SignUp} exact/>
+                <Route activeClassName="is-active" path="/" component={Home} exact/>
+                <Route activeClassName="is-active" path="/login" component={Login} exact/>
+                <Route activeClassName="is-active" path="/signup" component={SignUp} exact/>
                 <Route component={NotFound}/>
             </Switch>
         </BrowserRouter>

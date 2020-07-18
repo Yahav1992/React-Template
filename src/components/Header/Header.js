@@ -1,6 +1,4 @@
-import {Nav, Navbar, NavItem} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
-import {LinkContainer} from "react-router-bootstrap";
 import React from "react";
 import {useAppContext} from "../../libs/contextLib";
 
@@ -14,28 +12,21 @@ export default function Header() {
     }
 
     return (
-        <Navbar fluid collapseOnSelect>
-            <Navbar.Header>
-                <Navbar.Brand>
-                    <NavLink to="/">Scratch</NavLink>
-                </Navbar.Brand>
-                <Navbar.Toggle/>
-            </Navbar.Header>
-            <Navbar.Collapse>
-                <Nav pullRight>
-                    {isAuthenticated
-                        ? <NavItem onClick={handleLogout}>Logout</NavItem>
-                        : <>
-                            <LinkContainer to="/signup">
-                                <NavItem>Signup</NavItem>
-                            </LinkContainer>
-                            <LinkContainer to="/login">
-                                <NavItem>Login</NavItem>
-                            </LinkContainer>
-                        </>
-                    }
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
+        <header className="header">
+            <div className="content-container">
+                <div className="header__content">
+                    <NavLink activeClassName="is-active" className="header__title" to="/">Scratch</NavLink>
+                    <div className="header__actions">
+                        {isAuthenticated
+                            ? <NavLink activeClassName="is-active" to="/" onClick={handleLogout}>Logout</NavLink>
+                            : <>
+                                <NavLink activeClassName="is-active" to="/signup">Signup</NavLink>
+                                <NavLink activeClassName="is-active" to="/login">Login</NavLink>
+                            </>
+                        }
+                    </div>
+                </div>
+            </div>
+        </header>
     );
 }

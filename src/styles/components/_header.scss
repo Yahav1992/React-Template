@@ -1,0 +1,40 @@
+.header {
+  background: $dark-blue;
+}
+
+.header__title {
+  color: white;
+  text-decoration: none;
+  font-size: $l-size;
+}
+
+.header__title:hover {
+  text-decoration: none;
+  color: white;
+}
+.header__title:checked {
+  text-decoration: none;
+  color: white;
+}
+
+.header__content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: $s-size $s-size;
+}
+
+.header__actions {
+  > a {
+    font-size: $m-size;
+  }
+
+  > a:hover {
+    text-decoration: none;
+    color: white;
+  }
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: $s-size;
+}
