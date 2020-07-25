@@ -73,7 +73,8 @@ export default function Login() {
     const [isLoading, setIsLoading] = useState(false);
     const [fields, handleFieldChange] = useFormFields({
         password: "",
-        userName: ""
+        userName: "",
+        email: "",
     });
     const appDispatch = useDispatchContext();
 
@@ -93,9 +94,8 @@ export default function Login() {
                 payload: {value: "Login successfully!", severity: SUCCESS, open: true}
             })
             setIsLoading(true);
-            localStorage.setItem("loggedIn", "true");
-            appDispatch({type: "login", payload: {value: true}})
-            setTimeout(() => history.push("/"), 1000);
+            appDispatch({type: "login", payload: {value: true, user: response.data}})
+            history.push("/");
         } catch (e) {
             //onError(e);
             appDispatch({

@@ -1,7 +1,7 @@
 export function reducer(state, action) {
     switch (action.type) {
         case "login":
-            return {...state, loggedIn: action.payload.value};
+            return {...state, loggedIn: action.payload.value, user: action.payload.user};
         case "authenticating":
             return {...state, isAuthenticating: action.payload.value};
         case "notification":

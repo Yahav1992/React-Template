@@ -40,7 +40,7 @@ export default function CustomizedSnackbars() {
 
     return (
         <div className={classes.root}>
-            <Snackbar open={notificationOpen} autoHideDuration={99900} onClose={handleClose}>
+            <Snackbar open={notificationOpen} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity={severity}>
                     {notifications}
                 </Alert>

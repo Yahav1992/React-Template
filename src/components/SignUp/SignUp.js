@@ -45,11 +45,15 @@ export default function SignUp() {
                 ...fields
             };
             const response = await createUser(newUser);
-            console.log(response);
+            console.log(response.data);
             setIsLoading(false);
-            setNewUser(newUser);
+            setNewUser(response.data);
         } catch (e) {
-            onError(e);
+            //onError(e);
+            appDispatch({
+                type: "notification",
+                payload: {value: "Login Failed! " + e.response?.data, severity: ERROR, open: true}
+            })
             setIsLoading(false);
         }
     }
@@ -57,7 +61,7 @@ export default function SignUp() {
     async function handleConfirmationSubmit(event) {
         event.preventDefault();
         if (fields.confirmationCode === "123") {
-            localStorage.setItem("loggedIn", "true");
+            appDispatch({type: "login", payload: {value: true, user: newUser}})
             appDispatch({
                 type: "notification",
                 payload: {value: "Registered successfully!", severity: SUCCESS, open: true}

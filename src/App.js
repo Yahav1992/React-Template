@@ -13,12 +13,16 @@ function App() {
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    useEffect(() => {
-        onLoad();
-    }, []);
+    useEffect(onLoad, [state.loggedIn]);
 
     function onLoad() {
-        dispatch({type: "login", payload:{value: Boolean(localStorage.getItem("loggedIn"))}});
+        if (state.loggedIn) {
+            localStorage.setItem("token", state.user.token);
+            localStorage.setItem("userName", state.user.userName);
+        } else {
+            //localStorage.removeItem("token");
+           // localStorage.removeItem("userName");
+        }
         dispatch({type: "authenticating", payload: {value: false}});
     }
 
