@@ -6,17 +6,20 @@ import Header from "../components/Header/Header";
 import Login from "../components/Login/Login";
 import {useAppContext} from "../libs/contextLib";
 import SignUp from "../components/SignUp/SignUp";
+import Notification from '../components/Snackbar/CustomizedSnackbars';
 
 export default function Routes() {
-    const {isAuthenticating} = useAppContext();
+    const {isAuthenticating, loggedIn, notifications, severity} = useAppContext();
+
     return (
         !isAuthenticating &&
         <BrowserRouter>
+            <Notification messages={notifications} severity={severity}/>
             <Header/>
             <Switch>
-                <Route activeClassName="is-active" path="/" component={Home} exact/>
-                <Route activeClassName="is-active" path="/login" component={Login} exact/>
-                <Route activeClassName="is-active" path="/signup" component={SignUp} exact/>
+                <Route path="/" component={loggedIn ? Home : SignUp} exact/>
+                <Route path="/login" component={Login} exact/>
+                <Route path="/signup" component={SignUp} exact/>
                 <Route component={NotFound}/>
             </Switch>
         </BrowserRouter>

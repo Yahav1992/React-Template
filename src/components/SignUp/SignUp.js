@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
-import {FormLabel, FormControl, FormGroup, FormText} from "react-bootstrap";
+import {FormControl, FormGroup, FormLabel, FormText} from "react-bootstrap";
 import LoaderButton from "../LoaderButton/LoaderButton";
 import {useAppContext} from "../../libs/contextLib";
 import {useFormFields} from "../../libs/hooksLib";
@@ -12,18 +12,20 @@ export default function SignUp() {
     const [fields, handleFieldChange] = useFormFields({
         email: "",
         password: "",
+        userName: "",
         confirmPassword: "",
         confirmationCode: "",
     });
     const history = useHistory();
     const [newUser, setNewUser] = useState(null);
-    const {userHasAuthenticated} = useAppContext();
+    const {setLoggedIn} = useAppContext();
     const [isLoading, setIsLoading] = useState(false);
 
     function validateForm() {
         return (
             fields.email.length > 0 &&
             fields.password.length > 0 &&
+            fields.userName.length > 0 &&
             fields.password === fields.confirmPassword
         );
     }
@@ -35,16 +37,15 @@ export default function SignUp() {
     async function handleSubmit(event) {
         event.preventDefault();
         setIsLoading(true);
-        try{
+        try {
             const newUser = {
-                name: "",
-                password: fields.password,
-                email: fields.email
+                ...fields
             };
-            await createUser(newUser);
+            const response = await createUser(newUser);
+            console.log(response);
             setIsLoading(false);
             setNewUser(newUser);
-        }catch(e){
+        } catch (e) {
             onError(e);
             setIsLoading(false);
         }
@@ -54,7 +55,7 @@ export default function SignUp() {
         event.preventDefault();
         if (fields.confirmationCode === "123") {
             localStorage.setItem("loggedIn", "true");
-            userHasAuthenticated(true);
+            setLoggedIn(true);
             history.push("/");
         } else {
             onError(new Error("Invalid confirmation code!"));
@@ -91,6 +92,15 @@ export default function SignUp() {
     function renderForm() {
         return (
             <form onSubmit={handleSubmit}>
+                <FormGroup controlId="userName" size="lg">
+                    <FormLabel>User Name</FormLabel>
+                    <FormControl
+                        autoFocus
+                        type="userName"
+                        value={fields.userName}
+                        onChange={handleFieldChange}
+                    />
+                </FormGroup>
                 <FormGroup controlId="email" size="lg">
                     <FormLabel>Email</FormLabel>
                     <FormControl

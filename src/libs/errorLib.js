@@ -5,5 +5,5 @@ export function onError(error) {
     if (!(error instanceof Error) && error.message) {
         message = error.message;
     }
-    alert(message+'\n'+serverMessage);
+    alert(message + '\n' + serverMessage);
 }

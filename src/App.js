@@ -1,22 +1,33 @@
 import React, {useEffect, useState} from "react";
 import "./App.css";
-import Routes from "./Routes/Routes";
+import Routes from "./routes/Routes";
 import {AppContext} from "./libs/contextLib";
-import 'normalize.css/normalize.css'
+//import "@babel/polyfill"; // convert JSX to different kind of browsers, supports multiple versions.
+import 'normalize.css/normalize.css' // resetting css settings in all browsers
 import './styles/styles.scss';
+import {INFO} from "./constants/Constants";
 
 function App() {
-    const [isAuthenticated, userHasAuthenticated] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
     const [isAuthenticating, setIsAuthenticating] = useState(true);
+    const [notifications, setNotifications] = useState([]);
+    const [severity, setSeverity] = useState(INFO);
+    const [notificationOpen, setNotificationOpen] = React.useState(false);
+
+    function addNotificationMessage(msg, severity) {
+        setNotifications(msg);
+        setSeverity(severity);
+        setNotificationOpen(true);
+    }
 
     useEffect(() => {
         onLoad();
     }, []);
 
-    async function onLoad() {
+    function onLoad() {
         try {
-            let loggedIn = localStorage.getItem("loggedIn");
-            userHasAuthenticated(loggedIn !== null);
+            let loggedInLS = localStorage.getItem("loggedIn");
+            setLoggedIn(loggedInLS !== null);
         } catch (e) {
             if (e !== 'No current user') {
                 alert(e);
@@ -28,10 +39,16 @@ function App() {
 
     return (
         <AppContext.Provider value={{
-            isAuthenticated,
-            userHasAuthenticated,
+            loggedIn,
+            setLoggedIn,
             isAuthenticating,
-            setIsAuthenticating
+            setIsAuthenticating,
+            notifications,
+            setNotifications,
+            addNotificationMessage,
+            notificationOpen,
+            setNotificationOpen,
+            severity
         }}>
             <Routes/>
         </AppContext.Provider>

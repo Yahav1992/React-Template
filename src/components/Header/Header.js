@@ -1,14 +1,15 @@
 import {NavLink} from "react-router-dom";
 import React from "react";
 import {useAppContext} from "../../libs/contextLib";
+import Login from "../Login/Login";
 
 export default function Header() {
 
-    const {isAuthenticated, userHasAuthenticated} = useAppContext();
+    const {loggedIn, setLoggedIn} = useAppContext();
 
     function handleLogout() {
         localStorage.removeItem("loggedIn");
-        userHasAuthenticated(false);
+        setLoggedIn(false);
     }
 
     return (
@@ -17,12 +18,9 @@ export default function Header() {
                 <div className="header__content">
                     <NavLink activeClassName="is-active" className="header__title" to="/">Scratch</NavLink>
                     <div className="header__actions">
-                        {isAuthenticated
+                        {loggedIn
                             ? <NavLink activeClassName="is-active" to="/" onClick={handleLogout}>Logout</NavLink>
-                            : <>
-                                <NavLink activeClassName="is-active" to="/signup">Signup</NavLink>
-                                <NavLink activeClassName="is-active" to="/login">Login</NavLink>
-                            </>
+                            : <Login/>
                         }
                     </div>
                 </div>
