@@ -4,12 +4,13 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import NotFound from "../components/NotFound/NotFound";
 import Header from "../components/Header/Header";
 import Login from "../components/Login/Login";
-import {useAppContext} from "../libs/contextLib";
 import SignUp from "../components/SignUp/SignUp";
 import Notification from '../components/Snackbar/CustomizedSnackbars';
+import {useStateContext} from "../libs/stateContextLib";
 
 export default function Routes() {
-    const {isAuthenticating, loggedIn, notifications, severity} = useAppContext();
+    const appState = useStateContext();
+    const {isAuthenticating, loggedIn, notifications, severity} = appState;
 
     return (
         !isAuthenticating &&

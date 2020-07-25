@@ -2,11 +2,12 @@ import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {FormControl, FormGroup, FormLabel, FormText} from "react-bootstrap";
 import LoaderButton from "../LoaderButton/LoaderButton";
-import {useAppContext} from "../../libs/contextLib";
 import {useFormFields} from "../../libs/hooksLib";
 import {onError} from "../../libs/errorLib";
 import "./SignUp.css";
 import {createUser} from "../../api/springRestApi";
+import {useDispatchContext} from "../../libs/dispatchContextLib";
+import {ERROR, SUCCESS} from "../../constants/Constants";
 
 export default function SignUp() {
     const [fields, handleFieldChange] = useFormFields({
@@ -18,8 +19,10 @@ export default function SignUp() {
     });
     const history = useHistory();
     const [newUser, setNewUser] = useState(null);
-    const {setLoggedIn} = useAppContext();
     const [isLoading, setIsLoading] = useState(false);
+
+    const appDispatch = useDispatchContext();
+
 
     function validateForm() {
         return (
@@ -55,10 +58,16 @@ export default function SignUp() {
         event.preventDefault();
         if (fields.confirmationCode === "123") {
             localStorage.setItem("loggedIn", "true");
-            setLoggedIn(true);
+            appDispatch({
+                type: "notification",
+                payload: {value: "Registered successfully!", severity: SUCCESS, open: true}
+            })
             history.push("/");
         } else {
-            onError(new Error("Invalid confirmation code!"));
+            appDispatch({
+                type: "notification",
+                payload: {value: "Invalid confirmation code!", severity: ERROR, open: true}
+            })
             setIsLoading(false);
         }
     }

@@ -1,15 +1,16 @@
 import {NavLink} from "react-router-dom";
 import React from "react";
-import {useAppContext} from "../../libs/contextLib";
 import Login from "../Login/Login";
+import {useDispatchContext} from "../../libs/dispatchContextLib";
+import {useStateContext} from "../../libs/stateContextLib";
 
 export default function Header() {
-
-    const {loggedIn, setLoggedIn} = useAppContext();
+    const appState = useStateContext();
+    const appDispatch = useDispatchContext();
 
     function handleLogout() {
         localStorage.removeItem("loggedIn");
-        setLoggedIn(false);
+        appDispatch({type: "login", payload: {value: false}});
     }
 
     return (
@@ -18,8 +19,8 @@ export default function Header() {
                 <div className="header__content">
                     <NavLink activeClassName="is-active" className="header__title" to="/">Scratch</NavLink>
                     <div className="header__actions">
-                        {loggedIn
-                            ? <NavLink activeClassName="is-active" to="/" onClick={handleLogout}>Logout</NavLink>
+                        {appState.loggedIn ?
+                            <NavLink activeClassName="is-active" to="/" onClick={handleLogout}>Logout</NavLink>
                             : <Login/>
                         }
                     </div>

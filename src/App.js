@@ -1,57 +1,34 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useReducer} from "react";
 import "./App.css";
 import Routes from "./routes/Routes";
-import {AppContext} from "./libs/contextLib";
+import {DispatchContext} from "./libs/dispatchContextLib";
+import {StateContext} from "./libs/stateContextLib";
 //import "@babel/polyfill"; // convert JSX to different kind of browsers, supports multiple versions.
 import 'normalize.css/normalize.css' // resetting css settings in all browsers
 import './styles/styles.scss';
-import {INFO} from "./constants/Constants";
+import {initialState} from "./reducer/InitState";
+import {reducer} from "./reducer/Reducer";
 
 function App() {
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [isAuthenticating, setIsAuthenticating] = useState(true);
-    const [notifications, setNotifications] = useState([]);
-    const [severity, setSeverity] = useState(INFO);
-    const [notificationOpen, setNotificationOpen] = React.useState(false);
 
-    function addNotificationMessage(msg, severity) {
-        setNotifications(msg);
-        setSeverity(severity);
-        setNotificationOpen(true);
-    }
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
         onLoad();
     }, []);
 
     function onLoad() {
-        try {
-            let loggedInLS = localStorage.getItem("loggedIn");
-            setLoggedIn(loggedInLS !== null);
-        } catch (e) {
-            if (e !== 'No current user') {
-                alert(e);
-            }
-        } finally {
-            setIsAuthenticating(false);
-        }
+        dispatch({type: "login", payload:{value: Boolean(localStorage.getItem("loggedIn"))}});
+        dispatch({type: "authenticating", payload: {value: false}});
     }
 
     return (
-        <AppContext.Provider value={{
-            loggedIn,
-            setLoggedIn,
-            isAuthenticating,
-            setIsAuthenticating,
-            notifications,
-            setNotifications,
-            addNotificationMessage,
-            notificationOpen,
-            setNotificationOpen,
-            severity
-        }}>
-            <Routes/>
-        </AppContext.Provider>
+        <StateContext.Provider value={state}>
+            <DispatchContext.Provider value={dispatch}>
+                <Routes/>
+            </DispatchContext.Provider>
+        </StateContext.Provider>
+
     );
 }
 
