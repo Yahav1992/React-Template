@@ -10,3 +10,6 @@ export const getUserByID = (userID) => API.get(buildUrl("/users/"+userID))
 export const createUser = (user) => API.post(buildUrl("/users"),user)
 export const loginUser = (user) => API.post(buildUrl("/login"),user)
 export const deleteUser = (userID) => API.delete(buildUrl("/users/"+userID))
+
+
+export const getCourses = () => API.get(buildUrl("/courses"))

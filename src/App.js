@@ -11,7 +11,7 @@ import {reducer} from "./reducer/Reducer";
 
 function App() {
 
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState, undefined);
 
     useEffect(onLoad, [state.loggedIn]);
 
@@ -20,6 +20,10 @@ function App() {
             localStorage.setItem("token", state.user.token);
             localStorage.setItem("userName", state.user.userName);
         } else {
+            const test = localStorage.getItem("userName");
+            if(test){
+                dispatch({type: "login", payload: {value: true, user: {userName: test}}})
+            }
             //localStorage.removeItem("token");
            // localStorage.removeItem("userName");
         }

@@ -7,6 +7,8 @@ import Login from "../components/Login/Login";
 import SignUp from "../components/SignUp/SignUp";
 import Notification from '../components/Snackbar/CustomizedSnackbars';
 import {useStateContext} from "../libs/stateContextLib";
+import ProfilePage from "../components/Profile/ProfilePage";
+import GymClasses from "../components/GymClasses/GymClasses";
 
 export default function Routes() {
     const appState = useStateContext();
@@ -21,6 +23,8 @@ export default function Routes() {
                 <Route path="/" component={loggedIn ? Home : SignUp} exact/>
                 <Route path="/login" component={Login} exact/>
                 <Route path="/signup" component={SignUp} exact/>
+                <Route path="/profile" component={ProfilePage} exact/>
+                <Route path="/registration" component={GymClasses} exact/>
                 <Route component={NotFound}/>
             </Switch>
         </BrowserRouter>
